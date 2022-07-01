@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    {% load static %}  
+    <link href="{% static 'css/bootstrap.min.css' %}" >  
+    <script src="{% static 'bootstrap.min.js' %}"></script>  
+    <title>Map</title>
+</head>
+<body>
+  {% load jalali_tags %}
+  <link rel="stylesheet" href="{% static 'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css' %}">
+  <script src="{% static 'admin/js/django_jalali.min.js' %}"></script>
+  
+
+  <!-- <p>{{ request.user.date_joined|to_jalali:'%y/%m/%d _ %H:%M:%S' }}</p> -->
+
+  <form method="GET">
+    <label>
+      Date:
+      <input type="date" name="date" required="true">
+    </label>
+
+    <label>
+      area:
+      <input type="number" name="n" min="2" max="8" step="1" required="true">
+    </label>
+  
+    <p><button>Submit</button></p>
+  </form>
+  <div> {{ map | safe }}</div>
+
+
+
+</body>
+</html>
+
+{% endblock %}
